@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import uuid
+import models
 from datetime import datetime
 
 """ Base model Class """
@@ -20,6 +21,8 @@ class BaseModel():
 
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.new(self)
+        models.storage.save()
 
     def __str__(self):
         id = self.id
